@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAttachTransform: {fileID: 1791954418256570311}
-  mArmLength: 3
+  mArmLength: 3.45
   mCameraCollisionOffset: 0.1
   mDoCollisionTest: 1
   mCollisionLayerMask:

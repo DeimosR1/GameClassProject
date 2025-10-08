@@ -39,7 +39,7 @@ public class CameraRig : MonoBehaviour
 
         mPitch = mPitch + mRotationRate * Time.deltaTime * mLookInput.y;
         mPitch = Mathf.Clamp(mPitch, mPitchMin, mPitchMax);
-        Debug.Log($"pitch value is: {mPitch}, input is: {mLookInput}");
+        //Debug.Log($"pitch value is: {mPitch}, input is: {mLookInput}");
 
         mPitchTransform.localEulerAngles = new Vector3(mPitch, 0f, 0f);
     }

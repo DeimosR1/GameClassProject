@@ -53,7 +53,7 @@ MonoBehaviour:
   mMaxFallSpeed: 50
   mMaxMoveSpeed: 5
   mGroundMoveSpeedAcceleration: 40
-  TurnLerpRate: 0
+  TurnLerpRate: 25
   mAirMoveSpeedAcceleration: 10
   mWasGrounded: 0
   mShouldTryJump: 0
@@ -118,7 +118,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.86, z: 0}
+  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!114 &6398987173505864972
 MonoBehaviour:
   m_ObjectHideFlags: 0

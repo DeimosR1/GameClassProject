@@ -51,7 +51,7 @@ MonoBehaviour:
   mPitchTransform: {fileID: 8972926788908131038}
   mPitchMin: -89
   mPitchMax: 89
-  mRotationRate: 50
+  mRotationRate: 100
 --- !u!1 &2059028187015133163
 GameObject:
   m_ObjectHideFlags: 0
