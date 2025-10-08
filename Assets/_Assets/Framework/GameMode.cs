@@ -11,6 +11,8 @@ public class GameMode : MonoBehaviour
 
     public static GameMode MainGameMode;
 
+    public BattleManager BattleManager { get; private set; }
+
 
     private void OnDestroy()
     {
@@ -26,6 +28,8 @@ public class GameMode : MonoBehaviour
             Destroy(gameObject);
         }
         MainGameMode = this;
+
+        BattleManager = new BattleManager();
 
         PlayerStart playerStart = FindFirstObjectByType<PlayerStart>();
         if (!playerStart)

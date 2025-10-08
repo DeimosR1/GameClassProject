@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 185851308699061166}
   - component: {fileID: 6398987173505864972}
   - component: {fileID: 8239343290512516940}
+  - component: {fileID: 7061565633908097434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -154,6 +155,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7061565633908097434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387171133522757916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f096dbb041c2e3a418aaf5402a154ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mBattleCharactersPrefabs:
+  - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
+  - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
 --- !u!1001 &7175490812693996455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,10 +223,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

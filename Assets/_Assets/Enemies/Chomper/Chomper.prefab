@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6231878859940169263}
   - component: {fileID: 5465095279997948781}
   - component: {fileID: 6840776395404877186}
+  - component: {fileID: -679546104241690763}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -139,6 +140,23 @@ MonoBehaviour:
           m_Value1: 11558789731531277559
         Name: MoveSpeed
         m_Value: 4
+--- !u!114 &-679546104241690763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466787800528643455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f096dbb041c2e3a418aaf5402a154ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mBattleCharactersPrefabs:
+  - {fileID: 1006945311785119471, guid: be9e2a1284c275941a85f17cbbf60f7a, type: 3}
+  - {fileID: 1006945311785119471, guid: be9e2a1284c275941a85f17cbbf60f7a, type: 3}
+  - {fileID: 1006945311785119471, guid: be9e2a1284c275941a85f17cbbf60f7a, type: 3}
+  - {fileID: 1006945311785119471, guid: be9e2a1284c275941a85f17cbbf60f7a, type: 3}
 --- !u!1001 &5484756761274461398
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
 public class Player : MonoBehaviour
@@ -10,6 +11,9 @@ public class Player : MonoBehaviour
     private MovementController mMovementController;
     CameraRig mCameraRig;
 
+    private BattleState mBattleState;
+    
+    [SerializeField] private BattlePartyComponent mBattlePartyComponent;
 
     void Awake()
     {
@@ -27,6 +31,10 @@ public class Player : MonoBehaviour
         mPlayerInputActions.Gameplay.Look.canceled += (context) => mCameraRig.SetLookInput(context.ReadValue<Vector2>());
     }
 
+    private bool IsInBattle()
+    {
+        return mBattleState == BattleState.InBattle;
+    }
     //Add OnEnable and Disable here!
     private void OnEnable()
     {
@@ -37,4 +45,19 @@ public class Player : MonoBehaviour
     {
         mPlayerInputActions.Disable();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == gameObject)
+        {
+            return;
+        }
+
+        BattlePartyComponent otherBattlePartyComponent = other.GetComponent<BattlePartyComponent>();
+        if(otherBattlePartyComponent && !IsInBattle())
+        {
+            GameMode.MainGameMode.BattleManager.StartBattle(mBattlePartyComponent, otherBattlePartyComponent);
+        }
+    }
+
 }
