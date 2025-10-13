@@ -1,1 +1,2 @@
-School Project where we try to recreate the gameplay style of Expedition 33.
+# Lost
+__Game Project that is inspired by Expedition 33__
