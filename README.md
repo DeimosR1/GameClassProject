@@ -34,4 +34,16 @@ The ```MovementController``` class governs the movement of the player character,
 
 * Update the animation parameters
 
+*Convert movement input to world dir:
+
+```c#
+Vector3 PlayerInputToWorldDir(Vector2 inputVal)
+    {
+        Vector3 rightDir = Camera.main.transform.right;
+        Vector3 fwdDir = Vector3.Cross(rightDir, Vector3.up);
+
+        return rightDir * inputVal.x + fwdDir * inputVal.y;
+    }
+```
+
 
