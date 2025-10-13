@@ -83,7 +83,6 @@ public class Enemy : MonoBehaviour
 
         Target = player.gameObject;
     }
-
     private void OnDrawGizmos()
     {
         Vector3 eyeViewPoint = transform.position + Vector3.up * mEyeHeight;

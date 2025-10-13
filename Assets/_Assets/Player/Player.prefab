@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6398987173505864972}
   - component: {fileID: 8239343290512516940}
   - component: {fileID: 7061565633908097434}
+  - component: {fileID: 5758495715944016308}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCameraRigPrefab: {fileID: 2161615477365084177, guid: 012d075921e185643a1827a08b6a85b9, type: 3}
+  mBattlePartyComponent: {fileID: 0}
 --- !u!95 &8239343290512516940
 Animator:
   serializedVersion: 7
@@ -170,6 +172,27 @@ MonoBehaviour:
   mBattleCharactersPrefabs:
   - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
   - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
+--- !u!135 &5758495715944016308
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387171133522757916}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.64
+  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!1001 &7175490812693996455
 PrefabInstance:
   m_ObjectHideFlags: 0

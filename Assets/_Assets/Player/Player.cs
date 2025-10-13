@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
         mPlayerInputActions.Gameplay.Look.performed += (context) => mCameraRig.SetLookInput(context.ReadValue<Vector2>());
         mPlayerInputActions.Gameplay.Look.canceled += (context) => mCameraRig.SetLookInput(context.ReadValue<Vector2>());
+
+        mBattlePartyComponent = GetComponent<BattlePartyComponent>();
     }
 
     private bool IsInBattle()
