@@ -20,7 +20,7 @@ The ```Player``` class has the following responsibilities:
 
 * Input Handling
 
-* Spawning the View Camera
+* Spawning and governing the View Camera
 
 * Trigger the Battle Encounter
 
