@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MovementController))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IViewClient
 {
 
     [SerializeField] CameraRig mCameraRigPrefab;
@@ -59,7 +59,27 @@ public class Player : MonoBehaviour
         if(otherBattlePartyComponent && !IsInBattle())
         {
             GameMode.MainGameMode.BattleManager.StartBattle(mBattlePartyComponent, otherBattlePartyComponent);
+            SwitchToBattleState(BattleState.InBattle);
         }
     }
 
+    private void SwitchToBattleState(BattleState battleState)
+    {
+        switch (battleState)
+        {
+            case BattleState.InBattle:
+                mPlayerInputActions.Disable();
+                break;
+            case BattleState.Roaming: 
+                mPlayerInputActions.Enable(); 
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetViewTarget(Transform viewTarget)
+    {
+        mCameraRig.SetFollowTransform(viewTarget);
+    }
 }
