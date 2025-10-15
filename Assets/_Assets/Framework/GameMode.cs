@@ -29,7 +29,7 @@ public class GameMode : MonoBehaviour
         }
         MainGameMode = this;
 
-        BattleManager = new BattleManager();
+        BattleManager = gameObject.AddComponent<BattleManager>();
 
         PlayerStart playerStart = FindFirstObjectByType<PlayerStart>();
         if (!playerStart)

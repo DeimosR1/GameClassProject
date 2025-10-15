@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleCharacter : MonoBehaviour
@@ -9,20 +11,31 @@ public class BattleCharacter : MonoBehaviour
 
     public float CooldownTimeRemaining {  get; private set; }
 
+    public event Action OnTurnFinished;
+
     private void Awake()
     {
         CooldownTimeRemaining = CooldownDuration;
         mTurnIndicator.SetActive(false);
+        GameMode.MainGameMode.BattleManager.IsInBattle = true;
     }
 
     public void TakeTurn()
     {
         Invoke("FinishTurn", 1);
+        Debug.Log($"{this.gameObject} took its turn");
         mTurnIndicator.SetActive(true);
     }
 
     public void FinishTurn()
     {
         mTurnIndicator.SetActive(false);
+        CooldownTimeRemaining = CooldownDuration;
+        OnTurnFinished?.Invoke();
+    }
+
+    public void AdvanceCooldown(float amount)
+    {
+        CooldownTimeRemaining -= amount;
     }
 }
