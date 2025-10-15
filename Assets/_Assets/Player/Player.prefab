@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mCameraRigPrefab: {fileID: 2161615477365084177, guid: 012d075921e185643a1827a08b6a85b9, type: 3}
+  mGameplayWidgetPrefab: {fileID: 7728156068288543229, guid: 3fae984b4c7fb8f4b9d7a9ef8b9228d0, type: 3}
   mBattlePartyComponent: {fileID: 0}
 --- !u!95 &8239343290512516940
 Animator:

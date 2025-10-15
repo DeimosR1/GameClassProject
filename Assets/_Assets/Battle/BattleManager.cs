@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,15 @@ public class BattleManager
         PrepParty(playerParty);
         PrepParty(enemyParty);
     }
+
+    private IEnumerator StartTurns()
+    {
+        //TODO: Refacto to not hard code the delay
+        yield return new WaitForSeconds(2);
+        NextTurn();
+    }
+
+    void NextTurn()
 
     private void PrepParty(BattlePartyComponent party)
     {

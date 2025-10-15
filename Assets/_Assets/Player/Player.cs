@@ -6,6 +6,9 @@ public class Player : MonoBehaviour, IViewClient
 {
 
     [SerializeField] CameraRig mCameraRigPrefab;
+    [SerializeField] GameplayWidget mGameplayWidgetPrefab;
+
+    GameplayWidget mGameplayWidget;
 
     private PlayerInputActions mPlayerInputActions; //Delete this from MovementController
     private MovementController mMovementController;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour, IViewClient
         mPlayerInputActions.Gameplay.Look.canceled += (context) => mCameraRig.SetLookInput(context.ReadValue<Vector2>());
 
         mBattlePartyComponent = GetComponent<BattlePartyComponent>();
+        mGameplayWidget = Instantiate(mGameplayWidgetPrefab);
     }
 
     private bool IsInBattle()
@@ -76,7 +80,16 @@ public class Player : MonoBehaviour, IViewClient
             default:
                 break;
         }
+
+        mGameplayWidget.DipToBlack(1, 1, DippedToBlack);
     }
+
+    void DippedToBlack()
+    {
+        Debug.Log($"Dipped To Black Called");
+        mBattlePartyComponent.UpdateView();
+    }
+
 
     public void SetViewTarget(Transform viewTarget)
     {
