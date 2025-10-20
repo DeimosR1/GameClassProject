@@ -34,6 +34,7 @@ public class Player : MonoBehaviour, IViewClient
         mPlayerInputActions.Gameplay.Look.canceled += (context) => mCameraRig.SetLookInput(context.ReadValue<Vector2>());
 
         mBattlePartyComponent = GetComponent<BattlePartyComponent>();
+        //mBattlePartyComponent.onBattleCharacterTakeTurn += BattleCharacter
         mGameplayWidget = Instantiate(mGameplayWidgetPrefab);
     }
 
