@@ -13,12 +13,16 @@ public class BattleManager : MonoBehaviour
 
     Queue<BattleCharacter> mFirstRoundBattleCharacters = new Queue<BattleCharacter>();
 
-    int mRoundNumber = 1;
-    int mFirstTurnNextIndex;
+    //int mRoundNumber = 1;
+    //int mFirstTurnNextIndex;
 
     public bool IsInBattle;
+
+    IViewClient mOwnerViewClient;
+
     public void StartBattle(BattlePartyComponent playerParty, BattlePartyComponent enemyParty)
     {
+        mOwnerViewClient = GameObject.FindGameObjectWithTag("Player").GetComponent<IViewClient>();
         mBattleCharacter.Clear();
         if (mBattleSites == null)
         {
@@ -45,7 +49,15 @@ public class BattleManager : MonoBehaviour
     {
         if(mFirstRoundBattleCharacters.TryDequeue(out BattleCharacter nextBattleCharacter))
         {
-            if (!mBattleCharacter.Contains(nextBattleCharacter)) { ProcessFirstRound(); return; }
+            if (mBattleCharacter.Contains(nextBattleCharacter))
+            {
+                nextBattleCharacter.TakeTurn();
+                return;
+            }
+            else
+            {
+                ProcessFirstRound();
+            }
             nextBattleCharacter.TakeTurn();
             return;
         }
@@ -78,7 +90,7 @@ public class BattleManager : MonoBehaviour
     private void UpdateTurnOrder()
     {
         Debug.Log("Started next Turn");
-        mBattleCharacter = mBattleCharacter.OrderBy((battleCharacter) => { return battleCharacter.CooldownTimeRemaining; }).ToList();
+        mBattleCharacter = mBattleCharacter.OrderBy((battleCharacter) => { return battleCharacter.CooldownTimeRemaining; }).ThenBy((battleCharacter) => {return 1/battleCharacter.Speed; }).ToList();
     }
 
     private void PrepParty(BattlePartyComponent party)

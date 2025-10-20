@@ -73,14 +73,17 @@ public class Player : MonoBehaviour, IViewClient
         {
             case BattleState.InBattle:
                 mPlayerInputActions.Disable();
+                mGameplayWidget.SwitchToBattle();
                 break;
             case BattleState.Roaming: 
                 mPlayerInputActions.Enable(); 
+                mGameplayWidget.SwitchToRoaming();
                 break;
             default:
                 break;
         }
 
+        
         mGameplayWidget.DipToBlack(1, 1, DippedToBlack);
     }
 

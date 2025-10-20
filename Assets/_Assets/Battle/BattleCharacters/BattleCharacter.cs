@@ -11,6 +11,8 @@ public class BattleCharacter : MonoBehaviour
 
     public float CooldownTimeRemaining {  get; private set; }
 
+    public event Action<BattleCharacter> onTurnStarted;
+
     public event Action OnTurnFinished;
 
     private void Awake()
@@ -25,6 +27,7 @@ public class BattleCharacter : MonoBehaviour
         Invoke("FinishTurn", 1);
         Debug.Log($"{this.gameObject} took its turn");
         mTurnIndicator.SetActive(true);
+        onTurnStarted?.Invoke(this);
     }
 
     public void FinishTurn()
