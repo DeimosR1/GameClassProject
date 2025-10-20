@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2251879573606149059, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
       propertyPath: <Speed>k__BackingField
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3406613918918383181, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
       propertyPath: m_LocalPosition.x
