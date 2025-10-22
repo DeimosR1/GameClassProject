@@ -43,8 +43,6 @@ public class BattlePartyComponent : MonoBehaviour
                 newBattleCharacter.onTurnStarted += CharacterInTurn;
                 mBattleCharacters.Add(newBattleCharacter);
             }
-
-            FinishPrep();
         }
 
         return mBattleCharacters;
@@ -52,8 +50,7 @@ public class BattlePartyComponent : MonoBehaviour
 
     private void CharacterInTurn(BattleCharacter battleCharacter)
     {
-        //CheckLastSecond of Class Recording to add all Battle Character Related Components.
-        //onBattleCharacterTakeTurn? Invoke(battleCharacter);
+        onBattleCharacterTakeTurn?.Invoke(battleCharacter);
         if (mOwnerViewClient is not null && battleCharacter)
         {
             mOwnerViewClient.SetViewTarget(battleCharacter.transform);

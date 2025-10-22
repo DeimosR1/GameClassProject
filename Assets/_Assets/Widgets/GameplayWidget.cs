@@ -14,7 +14,6 @@ public class GameplayWidget : MonoBehaviour
     private void Awake()
     {
         mTransitionImage.gameObject.SetActive(false);
-        mChildSwitcher = GetComponentInChildren<ChildSwitcher>();
     }
 
     public void DipToBlack(float dipInAndOutDuration, float dipStayDuration, Action dippedToBlackCallback)
@@ -24,7 +23,7 @@ public class GameplayWidget : MonoBehaviour
 
     public void SetFocusCharacterInBattle(BattleCharacter battleCharacter)
     {
-        
+        mBattleWidget.SetCharacterControlTarget(battleCharacter);
     }
 
 

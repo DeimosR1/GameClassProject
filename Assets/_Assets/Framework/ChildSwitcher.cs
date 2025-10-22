@@ -5,11 +5,11 @@ using UnityEngine;
 public class ChildSwitcher : MonoBehaviour
 {
    List<GameObject> mChildGameObjects = new List<GameObject>();
-    private int mCurrentActiveChildIndex;
+    private int mCurrentActiveChildIndex = 0;
 
     private void Awake()
     {
-        foreach (RectTransform childTransform in transform)
+        foreach (Transform childTransform in transform)
         {
             mChildGameObjects.Add(childTransform.gameObject);
         }
@@ -19,7 +19,7 @@ public class ChildSwitcher : MonoBehaviour
 
     public void SetActiveChild(GameObject childToSwitchTo)
     {
-        int childIndex = mChildGameObjects.FindIndex((x) => { return x.gameObject == x; });
+        int childIndex = mChildGameObjects.FindIndex((x) => { return childToSwitchTo == x; });
         SetActiveChildByIndex(childIndex);
     }
     private void SetActiveChildByIndex(int newActiveChildIndex)

@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2251879573606149059, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
+      propertyPath: <Name>k__BackingField
+      value: Chomper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251879573606149059, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
       propertyPath: <Speed>k__BackingField
       value: 1
       objectReference: {fileID: 0}

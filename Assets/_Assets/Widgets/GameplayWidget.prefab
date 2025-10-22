@@ -32,8 +32,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 672776181602288997}
   - {fileID: 843925705335334213}
+  - {fileID: 672776181602288997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -266,6 +266,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoamingWidget
       objectReference: {fileID: 0}
+    - target: {fileID: 7432393087513273801, guid: bad6d55124582234d8c6fd0264713c7d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432393087513273801, guid: bad6d55124582234d8c6fd0264713c7d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7710692863330960397, guid: bad6d55124582234d8c6fd0264713c7d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -452,6 +460,14 @@ PrefabInstance:
     - target: {fileID: 6352493681792993298, guid: a265e5d2dfd2fb44ca443dd383cf787b, type: 3}
       propertyPath: m_Name
       value: BattleWidget
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213230942164205953, guid: a265e5d2dfd2fb44ca443dd383cf787b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213230942164205953, guid: a265e5d2dfd2fb44ca443dd383cf787b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
