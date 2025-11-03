@@ -173,6 +173,7 @@ MonoBehaviour:
   mBattleCharactersPrefabs:
   - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
   - {fileID: 8089252451854193919, guid: e70aa9879630bfe499f9500a1a67d5ac, type: 3}
+  <PartyID>k__BackingField: 0
 --- !u!135 &5758495715944016308
 SphereCollider:
   m_ObjectHideFlags: 0

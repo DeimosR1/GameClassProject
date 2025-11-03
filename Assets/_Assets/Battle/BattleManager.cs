@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+[RequireComponent(typeof(TargetingComponent))]
+public class BattleManager : MonoBehaviour, ITargetService
 {
 
     List<BattleSite> mBattleSites;
 
-    [SerializeField] List<BattleCharacter> mBattleCharacter = new List<BattleCharacter>();
+    [SerializeField] List<BattleCharacter> mBattleCharacters = new List<BattleCharacter>();
 
     Queue<BattleCharacter> mFirstRoundBattleCharacters = new Queue<BattleCharacter>();
 
@@ -19,11 +20,12 @@ public class BattleManager : MonoBehaviour
     public bool IsInBattle;
 
     IViewClient mOwnerViewClient;
+    TargetingComponent mTargetingComponent;
 
     public void StartBattle(BattlePartyComponent playerParty, BattlePartyComponent enemyParty)
     {
         mOwnerViewClient = GameObject.FindGameObjectWithTag("Player").GetComponent<IViewClient>();
-        mBattleCharacter.Clear();
+        mBattleCharacters.Clear();
         if (mBattleSites == null)
         {
             mBattleSites = new List<BattleSite>();
@@ -40,7 +42,7 @@ public class BattleManager : MonoBehaviour
         //TODO: Refacto to not hard code the delay
         yield return new WaitForSeconds(2);
         UpdateTurnOrder();
-        mFirstRoundBattleCharacters = new Queue<BattleCharacter>(mBattleCharacter);
+        mFirstRoundBattleCharacters = new Queue<BattleCharacter>(mBattleCharacters);
         ProcessFirstRound();
         Debug.Log("Started Turnes");
     }
@@ -49,7 +51,7 @@ public class BattleManager : MonoBehaviour
     {
         if(mFirstRoundBattleCharacters.TryDequeue(out BattleCharacter nextBattleCharacter))
         {
-            if (mBattleCharacter.Contains(nextBattleCharacter))
+            if (mBattleCharacters.Contains(nextBattleCharacter))
             {
                 nextBattleCharacter.TakeTurn();
                 return;
@@ -62,7 +64,7 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        foreach(BattleCharacter battleCharacter in mBattleCharacter)
+        foreach(BattleCharacter battleCharacter in mBattleCharacters)
         {
             battleCharacter.OnTurnFinished -= ProcessFirstRound;
             battleCharacter.OnTurnFinished += NextTurn;
@@ -74,23 +76,23 @@ public class BattleManager : MonoBehaviour
     void NextTurn()
     {
         UpdateTurnOrder();
-        float globalCooldown = mBattleCharacter[0].CooldownDuration;
+        float globalCooldown = mBattleCharacters[0].CooldownDuration;
 
-        foreach (BattleCharacter battleCharacter in mBattleCharacter)
+        foreach (BattleCharacter battleCharacter in mBattleCharacters)
         {
             battleCharacter.AdvanceCooldown(globalCooldown);
         }
-        BattleCharacter nextInTurn = mBattleCharacter[0];
+        BattleCharacter nextInTurn = mBattleCharacters[0];
         nextInTurn.TakeTurn();
-        mBattleCharacter.Remove(mBattleCharacter[0]);
-        mBattleCharacter.Add(nextInTurn);
+        mBattleCharacters.Remove(mBattleCharacters[0]);
+        mBattleCharacters.Add(nextInTurn);
 
     }
 
     private void UpdateTurnOrder()
     {
         Debug.Log("Started next Turn");
-        mBattleCharacter = mBattleCharacter.OrderBy((battleCharacter) => { return battleCharacter.CooldownTimeRemaining; }).ThenBy((battleCharacter) => {return 1/battleCharacter.Speed; }).ToList();
+        mBattleCharacters = mBattleCharacters.OrderBy((battleCharacter) => { return battleCharacter.CooldownTimeRemaining; }).ThenBy((battleCharacter) => {return 1/battleCharacter.Speed; }).ToList();
     }
 
     private void PrepParty(BattlePartyComponent party)
@@ -107,8 +109,30 @@ public class BattleManager : MonoBehaviour
             partyBattleCharacter.transform.position = partyBattleSite.GetPositionForUnit(i);
             partyBattleCharacter.transform.rotation = partyBattleSite.transform.rotation;
             partyBattleCharacter.OnTurnFinished += ProcessFirstRound;
-            mBattleCharacter.Add(partyBattleCharacter);
+            mBattleCharacters.Add(partyBattleCharacter);
             i++;
         }
+    }
+
+    public List<BattleCharacter> GetTargetsForTeam(int teamId, bool hostileTargets)
+    {
+        List<BattleCharacter> targets = new List<BattleCharacter>();
+        foreach(BattleCharacter battleCharacter in mBattleCharacters)
+        {
+            if(battleCharacter.PartyID == teamId && !hostileTargets)
+            {
+                targets.Add(battleCharacter);
+            }
+            if(battleCharacter.PartyID != teamId && hostileTargets)
+            {
+                targets.Add(battleCharacter);
+            }
+        }
+        return targets;
+    }
+
+    public TargetingComponent GetTargetingComponent()
+    {
+        return mTargetingComponent;
     }
 }

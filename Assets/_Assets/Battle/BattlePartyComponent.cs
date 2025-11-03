@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BattlePartyComponent : MonoBehaviour
 {
     [SerializeField] BattleCharacter[] mBattleCharactersPrefabs;
@@ -12,6 +13,8 @@ public class BattlePartyComponent : MonoBehaviour
     IViewClient mOwnerViewClient;
 
     public event Action<BattleCharacter> onBattleCharacterTakeTurn;
+
+    [field: SerializeField] public int PartyID { get; private set; } = 0;
 
     private void Awake()
     {
