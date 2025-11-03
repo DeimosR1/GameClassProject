@@ -39,11 +39,15 @@ public class BattleCharacter : MonoBehaviour
         
     }
 
+    public void SetHighlighted(bool highlighted)
+    {
+        mTurnIndicator.SetActive(highlighted);
+    }
+
     public void TakeTurn()
     {
         //Invoke("FinishTurn", 1);
-        Debug.Log($"{this.gameObject} took its turn");
-        mTurnIndicator.SetActive(true);
+        SetHighlighted(true);
         onTurnStarted?.Invoke(this);
     }
 

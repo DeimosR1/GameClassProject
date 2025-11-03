@@ -10,9 +10,5 @@ public class BasicAttack : Ability
         base.ActivateAbility();
         int partyID = OwningAbilityComponent.GetPartyID();
         List<BattleCharacter> targets = GameMode.MainGameMode.BattleManager.GetTargetsForTeam(partyID, true);
-        foreach (BattleCharacter battleCharacter in targets)
-        {
-            Debug.Log($"Found Target: {battleCharacter.gameObject.name}");
-        }
     }
 }

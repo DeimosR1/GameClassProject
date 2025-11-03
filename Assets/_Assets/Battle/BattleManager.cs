@@ -22,6 +22,11 @@ public class BattleManager : MonoBehaviour, ITargetService
     IViewClient mOwnerViewClient;
     TargetingComponent mTargetingComponent;
 
+    private void Awake()
+    {
+        mTargetingComponent = GetComponent<TargetingComponent>();
+        mTargetingComponent.SetTargetService(this);
+    }
     public void StartBattle(BattlePartyComponent playerParty, BattlePartyComponent enemyParty)
     {
         mOwnerViewClient = GameObject.FindGameObjectWithTag("Player").GetComponent<IViewClient>();
