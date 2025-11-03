@@ -34,7 +34,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void TakeTurn()
     {
-        Invoke("FinishTurn", 1);
+        //Invoke("FinishTurn", 1);
         Debug.Log($"{this.gameObject} took its turn");
         mTurnIndicator.SetActive(true);
         onTurnStarted?.Invoke(this);

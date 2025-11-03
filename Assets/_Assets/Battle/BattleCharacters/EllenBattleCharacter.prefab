@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EllenBattleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 9124428098916887419, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
+      propertyPath: mInitialAbilities.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124428098916887419, guid: 753e36dabe02cd24aa9801d7b3f4043a, type: 3}
+      propertyPath: 'mInitialAbilities.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 61fabcc3224654540b53378458775d60, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
