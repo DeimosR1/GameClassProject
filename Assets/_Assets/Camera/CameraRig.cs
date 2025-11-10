@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
 public class CameraRig : MonoBehaviour
@@ -15,7 +18,19 @@ public class CameraRig : MonoBehaviour
 
     [SerializeField] float mRotationRate;
 
-    Transform mFollowTransform;
+    Transform mFollowTransform
+    {
+        get
+        {
+            if (mFollowTransforms.Count > 0)
+            {
+                return mFollowTransforms.Last();
+            }
+            return null;
+        }
+    }
+
+    List<Transform> mFollowTransforms = new List<Transform>();
 
     Vector2 mLookInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +42,7 @@ public class CameraRig : MonoBehaviour
 
     public void SetFollowTransform(Transform followtransform)
     {
-        mFollowTransform = followtransform;
+        mFollowTransforms.Add(followtransform);
     }
 
     // Update is called once per frame
@@ -48,5 +63,10 @@ public class CameraRig : MonoBehaviour
     {
         mPitch = 0f;
         mYawTransform.localRotation = Quaternion.identity;
+    }
+
+    internal void PopFollowTransform(Transform viewTarget)
+    {
+        mFollowTransforms.Remove(viewTarget);
     }
 }

@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, IViewClient
     }
 
 
-    public void SetViewTarget(Transform viewTarget)
+    public void PushViewTarget(Transform viewTarget)
     {
         mCameraRig.SetFollowTransform(viewTarget);
         mCameraRig.transform.rotation = viewTarget.transform.rotation;
@@ -111,4 +111,11 @@ public class Player : MonoBehaviour, IViewClient
     {
         mCameraRig.ResetViewAngle();
     }
+
+    public void PopViewTarget(Transform viewTarget)
+    {
+        mCameraRig.PopFollowTransform(viewTarget);
+    }
+
+    //Check Recording Later
 }

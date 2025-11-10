@@ -9,6 +9,10 @@ public class AbilityComponent : MonoBehaviour
 
     List<Ability> mAbilities = new List<Ability>();
 
+    IViewClient mOwnerViewClient;
+
+    [SerializeField] Transform mTargettingFollowTransform;
+
     public int GetPartyID()
     {
         return GetComponent<BattleCharacter>().PartyID;
@@ -28,8 +32,21 @@ public class AbilityComponent : MonoBehaviour
         mAbilities.Add(newAbility);
     }
 
+    public void StartTargeting(bool hostile)
+    {
+        if(mOwnerViewClient is not null)
+        {
+            mOwnerViewClient.PushViewTarget(mTargettingFollowTransform);
+        }
+        GameMode.MainGameMode.BattleManager.GetTargetingComponent().StartTargetting(GetPartyID(), hostile);
+    }
+
     internal IEnumerable<Ability> GetAbilities()
     {
         return mAbilities;
+    }
+    internal void SetViewClient(IViewClient viewClient)
+    {
+        mOwnerViewClient = viewClient;
     }
 }

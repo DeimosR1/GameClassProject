@@ -30,7 +30,7 @@ public class BattlePartyComponent : MonoBehaviour
     {
         if (mOwnerViewClient is not null)
         {
-            mOwnerViewClient.SetViewTarget(mBattleCharacters[0].transform);
+            mOwnerViewClient.PushViewTarget(mBattleCharacters[0].transform);
             mOwnerViewClient.ResetViewAngle();
         }
     }
@@ -43,7 +43,7 @@ public class BattlePartyComponent : MonoBehaviour
             foreach (BattleCharacter battleCharacter in mBattleCharactersPrefabs)
             {
                 BattleCharacter newBattleCharacter = Instantiate(battleCharacter);
-                newBattleCharacter.Init(PartyID);
+                newBattleCharacter.Init(PartyID, mOwnerViewClient);
                 newBattleCharacter.onTurnStarted += CharacterInTurn;
                 mBattleCharacters.Add(newBattleCharacter);
             }
@@ -57,7 +57,7 @@ public class BattlePartyComponent : MonoBehaviour
         onBattleCharacterTakeTurn?.Invoke(battleCharacter);
         if (mOwnerViewClient is not null && battleCharacter)
         {
-            mOwnerViewClient.SetViewTarget(battleCharacter.transform);
+            mOwnerViewClient.PushViewTarget(battleCharacter.transform);
         }
     }
 }
